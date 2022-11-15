@@ -1,15 +1,18 @@
 import React from 'react'
+
 import { SearchBar } from './'
-import { GiCrossMark } from 'react-icons/gi'
+
+import { BsYoutube } from 'react-icons/bs'
+
 const HeaderCont = () => {
   return (
     <header id="header">
       <h1 className="logo">
-        Animal survivals
-        <GiCrossMark className="icon" />
+        <BsYoutube className="icon" /> Programmer{' '}
       </h1>
       <SearchBar />
     </header>
   )
 }
+
 export default HeaderCont

@@ -1,19 +1,21 @@
 import React from 'react'
-import { SlMagnifier } from 'react-icons/sl'
+import { BsSearch } from 'react-icons/bs'
+
 const SearchBar = () => {
   return (
     <div className="search">
-      <label htmlFor="searchInput" className="glass">
-        <SlMagnifier />
+      <label className="glass" htmlFor="searchInput">
+        <BsSearch />
       </label>
       <input
         type="text"
         id="searchInput"
-        className="input__searc"
+        className="input__search"
         placeholder="개발자 유튜버 검색"
         title="검색"
       />
     </div>
   )
 }
+
 export default SearchBar
