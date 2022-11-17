@@ -28,7 +28,7 @@
         margin-right: 10px;
         vertical-align: -2px;
         // color: rgb(151, 79, 16);
-        color: #ea3323;
+        // color: #ea3323;
       }
     }
   }
@@ -54,7 +54,50 @@
   > div {
     width: 24%;
     margin-bottom: 1%;
-    height: 400px;
-    background: rgb(252, 206, 206);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    .boxInfo {
+      a {
+        display: block;
+      }
+      .videoTitle {
+        display: block;
+        padding: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      .channelName {
+        display: block;
+        font-size: 14px;
+        color: #eee;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        text-align: right;
+      }
+    }
+  }
+}
+
+.play {
+  width: 100%;
+  background: #aaa;
+  position: relative;
+  padding: 27.65%;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 }

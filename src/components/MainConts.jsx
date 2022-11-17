@@ -9,10 +9,10 @@ const MainConts = () => {
   const [videos, setVideos] = useState(null)
 
   useEffect(() => {
-    fetchAPI(`search?part=snippet&q=webstoryboy`).then((data) =>
-      console.log(data)
+    fetchAPI(`search?part=snippet&q=${selectCategory}&type=video`).then(
+      (data) => setVideos(data.items)
     )
-  }, [])
+  }, [selectCategory])
   return (
     <main id="main">
       <aside id="aside">
