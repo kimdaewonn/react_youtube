@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { VideoCard, Loarder } from './'
+import { VideoCard, Loader } from './'
 
 const Videos = ({ videos }) => {
   console.log(videos)
-  if (!videos?.length) return <Loarder />
+  if (!videos?.length) return <Loader />
   return (
     <article className="videos__inner">
       {videos.map((item, idx) => (

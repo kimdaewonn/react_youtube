@@ -8,4 +8,4 @@ export { default as Videos } from './Videos'
 export { default as Category } from './Category'
 
 export { default as VideoCard } from './VideoCard'
-export { default as Loarder } from './Loarder'
+export { default as Loader } from './Loader'

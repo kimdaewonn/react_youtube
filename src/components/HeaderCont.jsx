@@ -9,8 +9,9 @@ const HeaderCont = () => {
   return (
     <header id="header">
       <h1 className="logo">
-        <Link to="/"></Link>
-        <BsYoutube className="icon" /> Programmer{' '}
+        <Link to="/">
+          <BsYoutube className="icon" /> Programmer
+        </Link>
       </h1>
       <SearchBar />
     </header>
