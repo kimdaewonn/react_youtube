@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { categories } from '../utils/content'
 
 const Category = ({ selectCategory, setSelectCategory }) => {
@@ -10,18 +9,15 @@ const Category = ({ selectCategory, setSelectCategory }) => {
           style={{
             backgroundColor:
               category.name === selectCategory ? 'orange' : 'transparent',
-            padding:
-              category.name === selectCategory ? '10px 30px 5px 30px' : null,
-          }}
+          }} //카테고리 이름과 내가선택한 카테고리가 같을 경우 배경색 바꿔 주는거
           key={category.name}
           onClick={() => setSelectCategory(category.name)}
         >
-          <span>{category.icon}</span>
-          <span>{category.name}</span>
+          <span className="cate__icon">{category.icon}</span>
+          <span className="cate__name">{category.name}</span>
         </button>
       ))}
     </div>
   )
 }
-
 export default Category

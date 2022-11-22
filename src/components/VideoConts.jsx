@@ -1,29 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactPlayer from 'react-player'
-import { Link, useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { fetchAPI } from '../utils/fetchAPI'
-import { Loader } from './'
-
-function ListText({ list }) {
-  return (
-    <div className="list">
-      <Link to={`/video/${list.id.videoId}`}>
-        <img src={list.snippet?.thumbnails?.high?.url} alt="" />
-      </Link>
-      <div className="list__box">
-        <Link to={`/video/${list.id.videoId}`}>
-          <h3 className="list__tit">{list.snippet.title}</h3>
-        </Link>
-        <p className="list__desc">{list.snippet.description}</p>
-      </div>
-    </div>
-  )
-}
+import { Videos, Loader } from './'
+import { FaSplotch } from 'react-icons/fa'
 
 const VideoConts = () => {
   const [videoDetail, setVideoDetail] = useState(null)
   const [videos, setVideos] = useState(null)
   const { id } = useParams()
+  // console.log(videoDetail)
 
   useEffect(() => {
     fetchAPI(`videos?part=snippet,statistics&id=${id}`).then((data) =>
@@ -34,33 +20,46 @@ const VideoConts = () => {
       (data) => setVideos(data.items)
     )
   }, [id])
-
+  if (!videoDetail?.snippet) return <Loader />
   // const {
-  //   snippet: { title, channelId, channelTitle },
+  //   snippet: { title, channelTitle },
   //   statistics: { viewCount, likeCount },
   // } = videoDetail
-  if (!videos?.length) return <Loader />
   return (
-    <section className="videoConts">
-      <div className="container">
-        <div className="video__inner">
-          <div className="left">
-            <div className="play">
-              <ReactPlayer
-                url={`https://www.youtube.com/watch?v=${id}`}
-                controls
-              />
-            </div>
-            <div className="desc"></div>
+    <div className="contanier">
+      <section className="videoConts">
+        <div className="videoLeft">
+          <div className="video__player">
+            <ReactPlayer
+              url={`https://www.youtube.com/watch?v=${id}`}
+              controls
+            />
           </div>
-          <div className="right">
-            {videos.map((list, idx) =>
-              idx < 7 ? <ListText key={idx} list={list} /> : null
-            )}
+          <div className="video__desc">
+            <div className="video__flex">
+              <div className="video__title">{videoDetail.snippet?.title}</div>
+              <div className="viewcount">
+                조회수 : {videoDetail.statistics?.viewCount}회
+              </div>
+              <div className="likecount">
+                <FaSplotch /> {videoDetail.statistics?.likeCount}
+              </div>
+            </div>
+            <Link to={`/channel/${videoDetail?.snippet?.channelId}`}>
+              <div className="video__channel">
+                {videoDetail.snippet?.channelTitle}
+              </div>
+            </Link>
+            <div className="video__add">
+              {videoDetail.snippet?.localized.description}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+        <aside className="videoRight side">
+          <Videos videos={videos} layout="column" />
+        </aside>
+      </section>
+    </div>
   )
 }
 

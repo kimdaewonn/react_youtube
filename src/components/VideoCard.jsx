@@ -12,14 +12,12 @@ const VideoCard = ({
       <Link to={`/video/${videoId}`}>
         <img src={snippet?.thumbnails?.high?.url} alt={snippet?.title} />
       </Link>
-      <div className="boxInfo">
-        <Link to={`/video/${videoId}`} className="videoTitle">
-          {snippet?.title.slice(0, 50)}
-        </Link>
-        <Link to={`/channel/${snippet.channelId}`} className="channelName">
-          {snippet.channelTitle}
-        </Link>
-      </div>
+      <Link to={`/video/${videoId}`}>
+        <span className="videoTitle">{snippet?.title}</span>
+      </Link>
+      <Link to={`/channel/${snippet.channelId}`}>
+        <span className="channelName">{snippet.channelTitle}</span>
+      </Link>
     </div>
   )
 }
